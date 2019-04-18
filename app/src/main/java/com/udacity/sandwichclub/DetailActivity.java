@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import java.util.List;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
@@ -90,17 +92,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
         if (sandwich.getAlsoKnownAs().size() > 0) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                String aka = String.join(", ", sandwich.getAlsoKnownAs());
-                alsoKnownAsTv.setText(aka);
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for(String i : sandwich.getAlsoKnownAs()){
-                    sb.append(i).append(", ");
-                }
-                sb.delete(sb.length()-2, sb.length());
-                alsoKnownAsTv.setText(sb.toString());
-            }
+            alsoKnownAsTv.setText(formatList(sandwich.getAlsoKnownAs()));
         } else {
             alsoKnownAsTitleTv.setVisibility(View.GONE);
             alsoKnownAsTv.setVisibility(View.GONE);
@@ -109,17 +101,21 @@ public class DetailActivity extends AppCompatActivity {
         descriptionTv.setText(sandwich.getDescription());
 
         if (sandwich.getIngredients().size() > 0) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                String ingredients = String.join(", ", sandwich.getIngredients());
-                ingredientsTv.setText(ingredients);
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for(String i : sandwich.getIngredients()){
-                    sb.append(i).append(", ");
-                }
-                sb.delete(sb.length()-2, sb.length());
-                ingredientsTv.setText(sb.toString());
+            ingredientsTv.setText(formatList(sandwich.getIngredients()));
+        }
+    }
+
+    private String formatList(List<String> list){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            String string = String.join(", ", sandwich.getIngredients());
+            return string;
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for(String i : list){
+                sb.append(i).append(", ");
             }
+            sb.delete(sb.length()-2, sb.length());
+            return sb.toString();
         }
     }
 }
