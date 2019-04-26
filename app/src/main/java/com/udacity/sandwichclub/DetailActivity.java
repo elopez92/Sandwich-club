@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +21,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+
+    private static final String NODATA = "No data available";
 
     private Sandwich sandwich = null;
 
@@ -83,39 +86,34 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI() {
-        if (!sandwich.getPlaceOfOrigin().isEmpty()) {
-            placeOfOriginTv.setText(sandwich.getPlaceOfOrigin());
-        } else {
-            placeOfOriginTitleTv.setVisibility(View.GONE);
-            placeOfOriginTv.setVisibility(View.GONE);
-        }
+        setStringText(placeOfOriginTv, sandwich.getPlaceOfOrigin());
+        setListText(alsoKnownAsTv, sandwich.getAlsoKnownAs());
+        setStringText(descriptionTv, sandwich.getDescription());
+        setListText(ingredientsTv, sandwich.getIngredients());
+    }
 
-
-        if (sandwich.getAlsoKnownAs().size() > 0) {
-            alsoKnownAsTv.setText(formatList(sandwich.getAlsoKnownAs()));
-        } else {
-            alsoKnownAsTitleTv.setVisibility(View.GONE);
-            alsoKnownAsTv.setVisibility(View.GONE);
-        }
-
-        descriptionTv.setText(sandwich.getDescription());
-
-        if (sandwich.getIngredients().size() > 0) {
-            ingredientsTv.setText(formatList(sandwich.getIngredients()));
+    private void setListText(TextView v, List<String> list){
+        if(list.size() != 0) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                String string = TextUtils.join(", ", list);
+                v.setText(string);
+            } else {
+                StringBuilder sb = new StringBuilder();
+                for (String i : list) {
+                    sb.append(i).append(", ");
+                }
+                sb.delete(sb.length() - 2, sb.length());
+                v.setText(sb.toString());
+            }
+        }else{
+            v.setText(NODATA);
         }
     }
 
-    private String formatList(List<String> list){
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String string = String.join(", ", sandwich.getIngredients());
-            return string;
-        } else {
-            StringBuilder sb = new StringBuilder();
-            for(String i : list){
-                sb.append(i).append(", ");
-            }
-            sb.delete(sb.length()-2, sb.length());
-            return sb.toString();
-        }
+    private void setStringText(TextView v, String string){
+        if(!string.equals("")){
+            v.setText(string);
+        }else
+            v.setText(NODATA);
     }
 }
