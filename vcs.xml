@@ -6,8 +6,12 @@
           <option name="url" value="https://github.com/udacity/AdvancedAndroid_ClassicalMusicQuiz.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/udacity/AdvancedAndroid_Shushme.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="C:\Users\lpz_l\Documents\ud851-Exercises-student\ud851-Exercises-student" />
+    <option name="cloneParentDir" value="C:\Users\lpz_l\Documents\udacity" />
   </component>
 </application>
