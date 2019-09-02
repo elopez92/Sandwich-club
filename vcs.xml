@@ -22,6 +22,10 @@
           <option name="url" value="https://github.com/indiandollar/CollectionWidgetTutorial-TodoApp.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/playgameservices/android-basic-samples.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\lpz_l\Documents\udacity" />
