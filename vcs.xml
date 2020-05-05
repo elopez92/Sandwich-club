@@ -38,6 +38,10 @@
           <option name="url" value="http://bitbucket.org" />
           <option name="userName" value="elopez92" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/android/wear-os-samples.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\lpz_l\Documents\AndroidProjects" />
