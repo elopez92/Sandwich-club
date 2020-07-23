@@ -2,6 +2,23 @@
   <component name="VisualizationTool">
     <option name="state">
       <GlobalState>
+        <option name="configurationSetName" value="CUSTOM" />
+        <option name="customConfigurationAttributes">
+          <list>
+            <CustomConfigurationAttribute>
+              <option name="apiLevel" value="28" />
+              <option name="deviceId" value="pixel" />
+              <option name="localeString" value="es-US" />
+              <option name="name" value="Preview" />
+              <option name="nightMode" value="NOTNIGHT" />
+              <option name="orientation" value="PORTRAIT" />
+              <option name="theme" value="AppTheme" />
+              <option name="uiMode" value="NORMAL" />
+            </CustomConfigurationAttribute>
+          </list>
+        </option>
+        <option name="scale" value="0.2977571539056458" />
+        <option name="showDecoration" value="true" />
         <option name="visible" value="true" />
       </GlobalState>
     </option>
